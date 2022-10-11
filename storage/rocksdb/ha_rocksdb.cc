@@ -5779,7 +5779,8 @@ bool rdb_sync_wal_supported() {
   // wsenv doesn't support SyncWAL=true yet
   return !rdb_has_wsenv();
 #else
-  return true;
+  // Set it to false because the rocksdb_write_disable_wal is not respected
+  return false;
 #endif
 }
 
